@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whisper - Relógio e Fone com Tradução em Tempo Real</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #b9fbc0);
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+        }
+        header {
+            background: #1a73e8;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+        header img {
+            max-width: 200px;
+            height: auto;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .hero h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #1a73e8;
+        }
+        .hero p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .hero img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .features, .sustainability {
+            margin-bottom: 60px;
+        }
+        .features h2, .sustainability h2 {
+            font-size: 1.8em;
+            color: #1a73e8;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .features ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .features li {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .features li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .sustainability p {
+            font-size: 1.1em;
+            color: #555;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .cta {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .cta p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .cta a {
+            background: #1a73e8;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .cta a:hover {
+            background: #0d47a1;
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Estilo das Partículas */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a73e8, #4caf50);
+            box-shadow: 0 0 8px rgba(26, 115, 232, 0.6);
+            pointer-events: none;
+            z-index: -1;
+            animation: floatParticle 5s ease-in-out infinite;
+        }
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-150px) rotate(180deg);
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-300px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Estilo da Página de Compra */
+        #comprar {
+            display: none;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            position: relative;
+        }
+        #comprar h2 {
+            font-size: 1.8em;
+            color: #1a73e8;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .carousel-container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin: 0 auto 20px;
+            overflow: hidden;
+        }
+        .carousel {
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.5s ease;
+        }
+        .carousel img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1.2em;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .arrow.left {
+            left: 10px;
+        }
+        .arrow.right {
+            right: 10px;
+        }
+        .arrow:hover {
+            background: #0d47a1;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group button {
+            background: #1a73e8;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .form-group button:hover {
+            background: #0d47a1;
+        }
+        #success-message {
+            display: none;
+            text-align: center;
+            color: #4caf50;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="1000281720-removebg-preview.png" alt="Whisper Logo" class="logo">
+    </header>
+
+    <div class="container">
+        <!-- Seção Hero -->
+        <section class="hero">
+            <h2>Tradução em Tempo Real, Design Sustentável</h2>
+            <p>Descubra o Whisper: o relógio e fone que traduzem idiomas instantaneamente, feitos com materiais reciclados do oceano.</p>
+            
+        </section>
+
+        <!-- Seção de Recursos -->
+        <section class="features">
+            <h2>Por que escolher o Whisper?</h2>
+            <ul>
+                <li><strong>Tradução em Tempo Real:</strong> Converse em qualquer idioma com tradução instantânea via fone de ouvido.</li>
+                <li><strong>Design Sustentável:</strong> Pulseira do relógio e estojo do fone feitos de plástico reciclado retirado dos oceanos.</li>
+                <li><strong>Conforto e Estilo:</strong> Design ergonômico e moderno, perfeito para o dia a dia ou viagens internacionais.</li>
+                <li><strong>Bateria de Longa Duração:</strong> Até 24 horas de uso contínuo para acompanhar sua rotina.</li>
+            </ul>
+        </section>
+
+        <!-- Seção de Sustentabilidade -->
+        <section class="sustainability">
+            <h2>Compromisso com o Planeta</h2>
+            <p>Nosso produto é mais do que tecnologia: é um passo para um futuro sustentável. Cada Whisper utiliza materiais reciclados de redes de pesca e plásticos retirados dos oceanos, contribuindo para a limpeza dos mares.</p>
+        </section>
+
+        <!-- Chamada para Ação (CTA) -->
+        <section class="cta">
+            <h2>Faça Parte da Revolução da Comunicação</h2>
+            <p>Adquira já o seu Whisper e conecte-se ao mundo de forma consciente!</p>
+            <a href="#comprar">Compre Agora</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Whisper. Todos os direitos reservados.</p>
+        <p>Contato: suporte@whisper.com | Siga-nos nas redes sociais</p>
+    </footer>
+
+    <!-- Página de Compra -->
+    <div id="comprar">
+        <h2>Finalizar Compra - Whisper</h2>
+        <div class="carousel-container">
+            <button class="arrow left" onclick="scrollCarousel(-1)">&#8679;</button>
+            <div class="carousel">
+                <img src="file_00000000b964622f9cdb1bfc7c2742de.png" alt="Whisper Produto 1">
+                <img src="file_000000006210622fb0e46b2341cddf2d.png" alt="Whisper Produto 2">
+            </div>
+            <button class="arrow right" onclick="scrollCarousel(1)">&#8681;</button>
+        </div>
+        <form id="purchase-form">
+            <div class="form-group">
+                <label for="quantity">Quantidade:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1">
+            </div>
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Endereço:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="city">Cidade:</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+                <label for="state">Estado:</label>
+                <input type="text" id="state" name="state" required>
+            </div>
+            <div class="form-group">
+                <label for="zip">CEP:</label>
+                <input type="text" id="zip" name="zip" required>
+            </div>
+            <div class="form-group">
+                <p><strong>Preço:</strong> R$ 499,90</p>
+                <p><strong>Política de Devolução:</strong> 30 dias para devoluções com nota fiscal.</p>
+            </div>
+            <div class="form-group">
+                <button type="submit">Finalizar Compra</button>
+            </div>
+        </form>
+        <div id="success-message">Compra realizada com sucesso! Obrigado por escolher o Whisper.</div>
+    </div>
+
+    <script>
+        // Script para criar partículas ao rolar a página
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            const size = Math.random() * 20 + 10;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.top = `${window.innerHeight + Math.random() * 50}px`;
+            particle.style.animationDuration = `${Math.random() * 3 + 3}s`;
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 5000);
+        }
+
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            if (currentScroll > lastScroll || currentScroll < lastScroll) {
+                createParticle();
+            }
+            lastScroll = currentScroll;
+        });
+
+        for (let i = 0; i < 3; i++) {
+            setTimeout(createParticle, i * 200);
+        }
+
+        // Script para a página de compra e carousel
+        document.querySelector('.cta a').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector('#comprar').style.display = 'block';
+            window.scrollTo({ top: document.querySelector('#comprar').offsetTop, behavior: 'smooth' });
+        });
+
+        document.getElementById('purchase-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('success-message').style.display = 'block';
+            document.querySelector('form').style.display = 'none';
+        });
+
+        let currentIndex = 0;
+        const carousel = document.querySelector('.carousel');
+        const images = document.querySelectorAll('.carousel img');
+        const totalImages = images.length;
+
+        function scrollCarousel(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = totalImages - 1;
+            if (currentIndex >= totalImages) currentIndex = 0;
+            carousel.style.transform = `translateY(-${currentIndex * 200}px)`;
+        }
+    </script>
+</body>
+</html>
