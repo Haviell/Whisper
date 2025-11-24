@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Whisper - Relógio e Fone com Tradução em Tempo Real</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 * {
   margin: 0;
@@ -24,6 +24,7 @@ header {
   text-align: center;
   padding: 50px 20px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  position: relative;
 }
 header img {
   max-width: 180px;
@@ -38,6 +39,7 @@ h2 {
   color: #1a73e8;
   margin-bottom: 15px;
   text-align: center;
+  font-weight: 600;
 }
 p {
   color: #555;
@@ -47,63 +49,115 @@ p {
 }
 .hero {
   margin-bottom: 60px;
+  background-color: #f8f9fa; /* Off-white background */
+  padding: 60px 20px;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #1a73e8;
+}
+.hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 30px;
 }
 .hero img {
   width: 100%;
+  max-width: 600px;
   border-radius: 20px;
   margin-top: 20px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
+.features {
+  margin: 80px 0;
+}
 .features ul {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
   list-style: none;
   margin-top: 30px;
 }
 .features li {
   background: #fff;
-  padding: 20px;
+  padding: 30px 20px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   transition: transform .3s ease, box-shadow .3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .features li:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #1a73e8;
+}
 .sustainability {
   background: #e3f2fd;
-  padding: 40px 20px;
+  padding: 60px 40px;
   border-radius: 12px;
   margin: 60px 0;
+  text-align: center;
+}
+.sustainability h2 {
+  margin-bottom: 20px;
 }
 .cta {
   text-align: center;
   margin: 60px 0;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #1a73e8, #4caf50);
+  color: white;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+.cta h2, .cta p {
+  color: white;
 }
 .cta a {
   display: inline-block;
-  background: #1a73e8;
-  color: #fff;
+  background: #fff;
+  color: #1a73e8;
   padding: 14px 40px;
   border-radius: 40px;
   font-weight: 600;
   text-decoration: none;
   font-size: 1.1em;
-  box-shadow: 0 4px 12px rgba(26,115,232,0.3);
-  transition: background .3s, transform .3s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all .3s;
+  margin-top: 20px;
 }
 .cta a:hover {
-  background: #1558b0;
+  background: #f0f0f0;
   transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 footer {
   background: #222;
   color: #ccc;
   text-align: center;
-  padding: 20px 10px;
+  padding: 30px 10px;
   font-size: 0.9em;
   margin-top: 60px;
+}
+footer p {
+  margin-bottom: 10px;
 }
 
 /* Página de compra */
@@ -115,6 +169,7 @@ footer {
   padding: 30px 20px;
   border-radius: 15px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  position: relative;
 }
 #comprar h2 {
   margin-bottom: 25px;
@@ -148,27 +203,35 @@ footer {
   cursor: pointer;
   font-size: 1.2em;
   border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background .3s;
 }
 .arrow.left { left: 10px; }
 .arrow.right { right: 10px; }
 .arrow:hover { background: #0d47a1; }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 label {
   font-weight: 600;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   color: #1a73e8;
 }
 input, select {
   width: 100%;
-  padding: 10px;
+  padding: 12px 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 1em;
   outline: none;
+  transition: border .3s, box-shadow .3s;
 }
 input:focus {
   border-color: #1a73e8;
@@ -179,11 +242,13 @@ button {
   color: white;
   border: none;
   border-radius: 8px;
-  padding: 12px 25px;
+  padding: 14px 25px;
   font-size: 1.1em;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.3s;
+  width: 100%;
+  margin-top: 10px;
 }
 button:hover {
   background: #1558b0;
@@ -194,14 +259,44 @@ button:hover {
   color: #4caf50;
   font-size: 1.2em;
   margin-top: 15px;
+  padding: 20px;
+  background: #e8f5e9;
+  border-radius: 8px;
+}
+.price-info {
+  background: #f5f9ff;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px 0;
+  text-align: center;
+}
+.price-info p {
+  margin-bottom: 5px;
+}
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #555;
+  width: auto;
+  padding: 5px;
+}
+.close-btn:hover {
+  color: #333;
 }
 
 /* Responsivo */
 @media (max-width: 700px) {
   header { padding: 40px 15px; }
+  .hero h2 { font-size: 2rem; }
   .features ul { grid-template-columns: 1fr; }
   .cta a { width: 100%; max-width: 300px; }
   #comprar { width: 90%; }
+  .sustainability { padding: 40px 20px; }
 }
 </style>
 </head>
@@ -215,17 +310,36 @@ button:hover {
 
 <div class="container">
   <section class="hero">
-    <h2>Tradução em Tempo Real, Design Sustentável</h2>
-    <p>Descubra o Whisper: o relógio e fone que traduzem idiomas instantaneamente, feitos com materiais reciclados do oceano.</p>
+    <div class="hero-content">
+      <h2>Tradução em Tempo Real, Design Sustentável</h2>
+      <p>Descubra o Whisper: o relógio e fone que traduzem idiomas instantaneamente, feitos com materiais reciclados do oceano.</p>
+      <img src="file_00000000b964622f9cdb1bfc7c2742de.png" alt="Whisper Product">
+    </div>
   </section>
 
   <section class="features">
     <h2>Por que escolher o Whisper?</h2>
     <ul>
-      <li><strong>Tradução em Tempo Real:</strong> Converse em qualquer idioma com tradução instantânea.</li>
-      <li><strong>Design Sustentável:</strong> Materiais reciclados retirados dos oceanos.</li>
-      <li><strong>Conforto e Estilo:</strong> Moderno, ergonômico e leve para o dia a dia.</li>
-      <li><strong>Bateria de Longa Duração:</strong> Até 24h de uso contínuo.</li>
+      <li>
+        <div class="feature-icon">🔊</div>
+        <strong>Tradução em Tempo Real</strong>
+        <p>Converse em qualquer idioma com tradução instantânea.</p>
+      </li>
+      <li>
+        <div class="feature-icon">🌱</div>
+        <strong>Design Sustentável</strong>
+        <p>Materiais reciclados retirados dos oceanos.</p>
+      </li>
+      <li>
+        <div class="feature-icon">⌚</div>
+        <strong>Conforto e Estilo</strong>
+        <p>Moderno, ergonômico e leve para o dia a dia.</p>
+      </li>
+      <li>
+        <div class="feature-icon">🔋</div>
+        <strong>Bateria de Longa Duração</strong>
+        <p>Até 24h de uso contínuo.</p>
+      </li>
     </ul>
   </section>
 
@@ -247,6 +361,7 @@ button:hover {
 </footer>
 
 <div id="comprar">
+  <button class="close-btn" onclick="closePurchase()">×</button>
   <h2>Finalizar Compra</h2>
   <div class="carousel-container">
     <button class="arrow left" onclick="scrollCarousel(-1)">&#8679;</button>
@@ -262,8 +377,12 @@ button:hover {
       <input type="number" id="quantity" value="1" min="1">
     </div>
     <div class="form-group">
-      <label for="name">Nome</label>
+      <label for="name">Nome Completo</label>
       <input type="text" id="name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">E-mail</label>
+      <input type="email" id="email" required>
     </div>
     <div class="form-group">
       <label for="address">Endereço</label>
@@ -281,8 +400,10 @@ button:hover {
       <label for="zip">CEP</label>
       <input type="text" id="zip" required>
     </div>
-    <p><strong>Preço:</strong> R$ 249,90</p>
-    <p><strong>Devolução:</strong> 30 dias com nota fiscal.</p>
+    <div class="price-info">
+      <p><strong>Preço: R$ 249,90</strong></p>
+      <p>Devolução: 30 dias com nota fiscal</p>
+    </div>
     <button type="submit">Finalizar Compra</button>
   </form>
   <div id="success-message">Compra realizada com sucesso! Obrigado por escolher o Whisper.</div>
@@ -295,10 +416,20 @@ document.querySelector('.cta a').addEventListener('click', e => {
   window.scrollTo({ top: document.querySelector('#comprar').offsetTop, behavior: 'smooth' });
 });
 
+function closePurchase() {
+  document.querySelector('#comprar').style.display = 'none';
+}
+
 document.getElementById('purchase-form').addEventListener('submit', e => {
   e.preventDefault();
   document.getElementById('success-message').style.display = 'block';
   e.target.style.display = 'none';
+  
+  // Simular envio de dados para o servidor
+  setTimeout(() => {
+    alert('Pedido confirmado! Você receberá um e-mail com os detalhes.');
+    closePurchase();
+  }, 2000);
 });
 
 let currentIndex = 0;
