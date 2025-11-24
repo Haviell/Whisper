@@ -5,298 +5,649 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Whisper - Relógio e Fone com Tradução em Tempo Real</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
+:root {
+  --primary: #1a73e8;
+  --secondary: #4caf50;
+  --accent: #ff6b35;
+  --light: #f8f9fa;
+  --dark: #333;
+  --text: #555;
+  --shadow: 0 4px 12px rgba(0,0,0,0.08);
+  --transition: all 0.3s ease;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Poppins', sans-serif;
   background: #f8fbff;
-  color: #333;
+  color: var(--dark);
   line-height: 1.6;
   overflow-x: hidden;
 }
+
+/* Header */
 header {
-  background: linear-gradient(90deg, #1a73e8, #4caf50);
-  color: #fff;
+  background: #ffffff; /* Fundo branco */
+  color: var(--dark);
   text-align: center;
-  padding: 50px 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  padding: 40px 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   position: relative;
+  overflow: hidden;
 }
+
 header img {
-  max-width: 180px;
-  margin-bottom: 10px;
+  max-width: 220px;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
 }
+
+header p {
+  font-size: 1.3rem;
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--text);
+}
+
+/* Container */
 .container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
 }
-h2 {
-  color: #1a73e8;
-  margin-bottom: 15px;
-  text-align: center;
-  font-weight: 600;
-}
-p {
-  color: #555;
-  font-size: 1rem;
-  text-align: center;
-  margin-bottom: 20px;
-}
+
+/* Hero Section */
 .hero {
-  margin-bottom: 60px;
-  background-color: #f8f9fa; /* Off-white background */
-  padding: 60px 20px;
-  border-radius: 20px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  margin: 60px 0;
+  background-color: var(--light);
+  padding: 80px 40px;
+  border-radius: 25px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
 }
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(26,115,232,0.1) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+}
+
 .hero-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
+
 .hero h2 {
+  font-size: 2.8rem;
+  margin-bottom: 25px;
+  color: var(--primary);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  color: var(--text);
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  transition: var(--transition);
+}
+
+.hero-image:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.hero-image img {
+  width: 100%;
+  display: block;
+}
+
+/* Features Section */
+.features {
+  margin: 100px 0;
+}
+
+.features h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
-  color: #1a73e8;
+  color: var(--primary);
+  font-weight: 700;
 }
-.hero p {
+
+.features > p {
   font-size: 1.2rem;
   max-width: 700px;
-  margin: 0 auto 30px;
+  margin: 0 auto 50px;
 }
-.hero img {
-  width: 100%;
-  max-width: 600px;
-  border-radius: 20px;
-  margin-top: 20px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-}
-.features {
-  margin: 80px 0;
-}
-.features ul {
+
+.features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
   list-style: none;
-  margin-top: 30px;
 }
-.features li {
+
+.feature-card {
   background: #fff;
-  padding: 30px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  transition: transform .3s ease, box-shadow .3s ease;
+  padding: 40px 25px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid var(--primary);
 }
-.features li:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
 .feature-icon {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  color: #1a73e8;
-}
-.sustainability {
-  background: #e3f2fd;
-  padding: 60px 40px;
-  border-radius: 12px;
-  margin: 60px 0;
-  text-align: center;
-}
-.sustainability h2 {
+  font-size: 3rem;
   margin-bottom: 20px;
+  color: var(--primary);
+  background: rgba(26,115,232,0.1);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.feature-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: var(--dark);
+}
+
+.feature-card p {
+  color: var(--text);
+  font-size: 1rem;
+}
+
+/* Sustainability Section */
+.sustainability {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  padding: 80px 40px;
+  border-radius: 20px;
+  margin: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.sustainability::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.3)"/></svg>');
+  background-size: cover;
+}
+
+.sustainability-content {
+  position: relative;
+  z-index: 1;
+}
+
+.sustainability h2 {
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  color: var(--primary);
+}
+
+.sustainability p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--dark);
+}
+
+.eco-badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--secondary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  margin-top: 30px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(76,175,80,0.3);
+}
+
+.eco-badge i {
+  margin-right: 8px;
+}
+
+/* CTA Section */
 .cta {
   text-align: center;
-  margin: 60px 0;
-  padding: 40px 20px;
-  background: linear-gradient(135deg, #1a73e8, #4caf50);
+  margin: 80px 0;
+  padding: 70px 40px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: white;
-  border-radius: 20px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  position: relative;
+  overflow: hidden;
 }
-.cta h2, .cta p {
+
+.cta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 1;
+}
+
+.cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
   color: white;
 }
-.cta a {
+
+.cta p {
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  color: white;
+}
+
+.cta-button {
   display: inline-block;
-  background: #fff;
-  color: #1a73e8;
-  padding: 14px 40px;
-  border-radius: 40px;
+  background: white;
+  color: var(--primary);
+  padding: 16px 45px;
+  border-radius: 50px;
   font-weight: 600;
   text-decoration: none;
-  font-size: 1.1em;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transition: all .3s;
+  font-size: 1.2em;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  transition: var(--transition);
   margin-top: 20px;
+  position: relative;
+  overflow: hidden;
 }
-.cta a:hover {
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s;
+}
+
+.cta-button:hover {
   background: #f0f0f0;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+/* Footer */
 footer {
   background: #222;
   color: #ccc;
   text-align: center;
-  padding: 30px 10px;
-  font-size: 0.9em;
-  margin-top: 60px;
-}
-footer p {
-  margin-bottom: 10px;
+  padding: 40px 20px;
+  margin-top: 80px;
 }
 
-/* Página de compra */
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer p {
+  margin-bottom: 10px;
+  color: #ccc;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.social-links a {
+  color: #ccc;
+  font-size: 1.5rem;
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Purchase Modal */
 #comprar {
   display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.purchase-modal {
   background: #fff;
-  max-width: 600px;
+  max-width: 700px;
   margin: 40px auto;
-  padding: 30px 20px;
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
   position: relative;
+  animation: modalFadeIn 0.4s ease;
 }
-#comprar h2 {
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.purchase-modal h2 {
   margin-bottom: 25px;
+  text-align: center;
+  font-size: 2.2rem;
 }
+
 .carousel-container {
   position: relative;
   width: 100%;
-  height: 220px;
+  height: 300px;
   overflow: hidden;
-  border-radius: 12px;
-  margin-bottom: 25px;
+  border-radius: 16px;
+  margin-bottom: 30px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
+
 .carousel {
   display: flex;
-  flex-direction: column;
   transition: transform 0.5s ease;
 }
+
 .carousel img {
   width: 100%;
-  height: 220px;
+  height: 300px;
   object-fit: cover;
+  flex-shrink: 0;
 }
+
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(26,115,232,0.9);
-  color: #fff;
+  background: rgba(255,255,255,0.9);
+  color: var(--primary);
   border: none;
-  padding: 10px;
+  padding: 12px;
   cursor: pointer;
   font-size: 1.2em;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10;
-  transition: background .3s;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-.arrow.left { left: 10px; }
-.arrow.right { right: 10px; }
-.arrow:hover { background: #0d47a1; }
+
+.arrow:hover {
+  background: white;
+  color: var(--primary);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.arrow.left { left: 15px; }
+.arrow.right { right: 15px; }
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ddd;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.indicator.active {
+  background: var(--primary);
+  transform: scale(1.2);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
 
 .form-group {
   margin-bottom: 20px;
 }
+
 label {
   font-weight: 600;
   display: block;
   margin-bottom: 8px;
-  color: #1a73e8;
+  color: var(--primary);
 }
+
 input, select {
   width: 100%;
-  padding: 12px 15px;
+  padding: 14px 16px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 1em;
   outline: none;
-  transition: border .3s, box-shadow .3s;
+  transition: var(--transition);
+  font-family: 'Poppins', sans-serif;
 }
-input:focus {
-  border-color: #1a73e8;
-  box-shadow: 0 0 5px rgba(26,115,232,0.3);
+
+input:focus, select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(26,115,232,0.2);
 }
-button {
-  background: #1a73e8;
+
+.purchase-summary {
+  background: #f5f9ff;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 25px 0;
+  text-align: center;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.guarantee {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.submit-button {
+  background: var(--primary);
   color: white;
   border: none;
-  border-radius: 8px;
-  padding: 14px 25px;
-  font-size: 1.1em;
+  border-radius: 12px;
+  padding: 16px 25px;
+  font-size: 1.2em;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: var(--transition);
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   margin-top: 10px;
 }
-button:hover {
+
+.submit-button:hover {
   background: #1558b0;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(26,115,232,0.3);
 }
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #777;
+  width: auto;
+  padding: 5px;
+  transition: var(--transition);
+  z-index: 10;
+}
+
+.close-btn:hover {
+  color: #333;
+  transform: scale(1.1);
+}
+
 #success-message {
   display: none;
   text-align: center;
-  color: #4caf50;
-  font-size: 1.2em;
-  margin-top: 15px;
-  padding: 20px;
+  color: var(--secondary);
+  font-size: 1.3em;
+  margin-top: 20px;
+  padding: 25px;
   background: #e8f5e9;
-  border-radius: 8px;
-}
-.price-info {
-  background: #f5f9ff;
-  padding: 15px;
-  border-radius: 8px;
-  margin: 20px 0;
-  text-align: center;
-}
-.price-info p {
-  margin-bottom: 5px;
-}
-.close-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #555;
-  width: auto;
-  padding: 5px;
-}
-.close-btn:hover {
-  color: #333;
+  border-radius: 12px;
+  border-left: 5px solid var(--secondary);
 }
 
-/* Responsivo */
-@media (max-width: 700px) {
+.success-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  color: var(--secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   header { padding: 40px 15px; }
+  header img { max-width: 180px; }
+  header p { font-size: 1.1rem; }
+  
+  .hero { padding: 50px 20px; }
   .hero h2 { font-size: 2rem; }
-  .features ul { grid-template-columns: 1fr; }
-  .cta a { width: 100%; max-width: 300px; }
-  #comprar { width: 90%; }
-  .sustainability { padding: 40px 20px; }
+  .hero p { font-size: 1.1rem; }
+  
+  .features-grid { grid-template-columns: 1fr; }
+  
+  .sustainability { padding: 50px 20px; }
+  .sustainability h2 { font-size: 2rem; }
+  
+  .cta { padding: 50px 20px; }
+  .cta h2 { font-size: 2rem; }
+  
+  .form-row { grid-template-columns: 1fr; }
+  
+  .purchase-modal { padding: 30px 20px; }
+  .carousel-container { height: 250px; }
+  .carousel img { height: 250px; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 20px 15px; }
+  .hero { padding: 40px 15px; }
+  .hero h2 { font-size: 1.8rem; }
+  
+  .feature-card { padding: 30px 20px; }
+  
+  .cta-button { width: 100%; max-width: 300px; }
+  
+  .purchase-modal { width: 95%; }
 }
 </style>
 </head>
@@ -304,7 +655,6 @@ button:hover {
 
 <header>
   <img src="1000281720-removebg-preview.png" alt="Whisper Logo">
-  <h1>Whisper</h1>
   <p>Relógio e Fone com Tradução em Tempo Real</p>
 </header>
 
@@ -313,111 +663,186 @@ button:hover {
     <div class="hero-content">
       <h2>Tradução em Tempo Real, Design Sustentável</h2>
       <p>Descubra o Whisper: o relógio e fone que traduzem idiomas instantaneamente, feitos com materiais reciclados do oceano.</p>
-      <img src="file_00000000b964622f9cdb1bfc7c2742de.png" alt="Whisper Product">
+      <div class="hero-image">
+        <img src="file_00000000b964622f9cdb1bfc7c2742de.png" alt="Whisper Product">
+      </div>
     </div>
   </section>
 
   <section class="features">
     <h2>Por que escolher o Whisper?</h2>
-    <ul>
-      <li>
-        <div class="feature-icon">🔊</div>
-        <strong>Tradução em Tempo Real</strong>
-        <p>Converse em qualquer idioma com tradução instantânea.</p>
+    <p>Inovação, sustentabilidade e tecnologia em um único dispositivo</p>
+    <ul class="features-grid">
+      <li class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-language"></i>
+        </div>
+        <h3>Tradução em Tempo Real</h3>
+        <p>Converse em qualquer idioma com tradução instantânea e precisa.</p>
       </li>
-      <li>
-        <div class="feature-icon">🌱</div>
-        <strong>Design Sustentável</strong>
-        <p>Materiais reciclados retirados dos oceanos.</p>
+      <li class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-leaf"></i>
+        </div>
+        <h3>Design Sustentável</h3>
+        <p>Materiais reciclados retirados dos oceanos, reduzindo o impacto ambiental.</p>
       </li>
-      <li>
-        <div class="feature-icon">⌚</div>
-        <strong>Conforto e Estilo</strong>
-        <p>Moderno, ergonômico e leve para o dia a dia.</p>
+      <li class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <h3>Conforto e Estilo</h3>
+        <p>Moderno, ergonômico e leve para o dia a dia, combinando com qualquer estilo.</p>
       </li>
-      <li>
-        <div class="feature-icon">🔋</div>
-        <strong>Bateria de Longa Duração</strong>
-        <p>Até 24h de uso contínuo.</p>
+      <li class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-battery-full"></i>
+        </div>
+        <h3>Bateria de Longa Duração</h3>
+        <p>Até 24h de uso contínuo, carregamento rápido e eficiente.</p>
       </li>
     </ul>
   </section>
 
   <section class="sustainability">
-    <h2>Compromisso com o Planeta</h2>
-    <p>Cada Whisper ajuda a limpar o oceano. Produzido com redes de pesca recicladas e plásticos retirados do mar.</p>
+    <div class="sustainability-content">
+      <h2>Compromisso com o Planeta</h2>
+      <p>Cada Whisper ajuda a limpar o oceano. Produzido com redes de pesca recicladas e plásticos retirados do mar, nosso produto combina tecnologia de ponta com responsabilidade ambiental.</p>
+      <div class="eco-badge">
+        <i class="fas fa-recycle"></i>
+        <span>Produto Eco-Friendly</span>
+      </div>
+    </div>
   </section>
 
   <section class="cta">
-    <h2>Conecte-se ao Mundo</h2>
-    <p>Adquira já o seu Whisper e viva a revolução da comunicação!</p>
-    <a href="#comprar">Compre Agora</a>
+    <div class="cta-content">
+      <h2>Conecte-se ao Mundo</h2>
+      <p>Adquira já o seu Whisper e viva a revolução da comunicação sem barreiras!</p>
+      <a href="#comprar" class="cta-button">Compre Agora <i class="fas fa-arrow-right"></i></a>
+    </div>
   </section>
 </div>
 
 <footer>
-  <p>© 2025 Whisper. Todos os direitos reservados.</p>
-  <p>Contato: suporte@whisper.com | Siga-nos nas redes sociais</p>
+  <div class="footer-content">
+    <p>© 2025 Whisper. Todos os direitos reservados.</p>
+    <p>Contato: suporte@whisper.com | (11) 99999-9999</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
 </footer>
 
 <div id="comprar">
-  <button class="close-btn" onclick="closePurchase()">×</button>
-  <h2>Finalizar Compra</h2>
-  <div class="carousel-container">
-    <button class="arrow left" onclick="scrollCarousel(-1)">&#8679;</button>
-    <div class="carousel">
-      <img src="file_00000000b964622f9cdb1bfc7c2742de.png" alt="Produto 1">
-      <img src="file_000000006210622fb0e46b2341cddf2d.png" alt="Produto 2">
+  <div class="purchase-modal">
+    <button class="close-btn" onclick="closePurchase()">×</button>
+    <h2>Finalizar Compra</h2>
+    
+    <div class="carousel-container">
+      <button class="arrow left" onclick="scrollCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
+      <div class="carousel">
+        <img src="file_00000000b964622f9cdb1bfc7c2742de.png" alt="Produto 1">
+        <img src="file_000000006210622fb0e46b2341cddf2d.png" alt="Produto 2">
+      </div>
+      <button class="arrow right" onclick="scrollCarousel(1)"><i class="fas fa-chevron-right"></i></button>
+      <div class="carousel-indicators">
+        <div class="indicator active" onclick="setCarousel(0)"></div>
+        <div class="indicator" onclick="setCarousel(1)"></div>
+      </div>
     </div>
-    <button class="arrow right" onclick="scrollCarousel(1)">&#8681;</button>
+    
+    <form id="purchase-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="quantity">Quantidade</label>
+          <input type="number" id="quantity" value="1" min="1" max="10">
+        </div>
+        <div class="form-group">
+          <label for="color">Cor</label>
+          <select id="color" required>
+            <option value="">Selecione uma cor</option>
+            <option value="preto">Preto</option>
+            <option value="branco">Branco</option>
+            <option value="azul">Azul</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="name">Nome Completo</label>
+        <input type="text" id="name" required placeholder="Seu nome completo">
+      </div>
+      
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" required placeholder="seu@email.com">
+      </div>
+      
+      <div class="form-group">
+        <label for="phone">Telefone</label>
+        <input type="tel" id="phone" required placeholder="(11) 99999-9999">
+      </div>
+      
+      <div class="form-group">
+        <label for="address">Endereço</label>
+        <input type="text" id="address" required placeholder="Rua, número, complemento">
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="city">Cidade</label>
+          <input type="text" id="city" required placeholder="Sua cidade">
+        </div>
+        <div class="form-group">
+          <label for="state">Estado</label>
+          <input type="text" id="state" required placeholder="Seu estado">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="zip">CEP</label>
+        <input type="text" id="zip" required placeholder="00000-000">
+      </div>
+      
+      <div class="purchase-summary">
+        <div class="price">R$ 249,90</div>
+        <p>Frete grátis para todo o Brasil</p>
+        <div class="guarantee">
+          <i class="fas fa-shield-alt"></i>
+          <span>Garantia de 30 dias ou seu dinheiro de volta</span>
+        </div>
+      </div>
+      
+      <button type="submit" class="submit-button">
+        <i class="fas fa-lock"></i>
+        Finalizar Compra
+      </button>
+    </form>
+    
+    <div id="success-message">
+      <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h3>Compra realizada com sucesso!</h3>
+      <p>Obrigado por escolher o Whisper. Você receberá um e-mail com os detalhes do pedido.</p>
+    </div>
   </div>
-  <form id="purchase-form">
-    <div class="form-group">
-      <label for="quantity">Quantidade</label>
-      <input type="number" id="quantity" value="1" min="1">
-    </div>
-    <div class="form-group">
-      <label for="name">Nome Completo</label>
-      <input type="text" id="name" required>
-    </div>
-    <div class="form-group">
-      <label for="email">E-mail</label>
-      <input type="email" id="email" required>
-    </div>
-    <div class="form-group">
-      <label for="address">Endereço</label>
-      <input type="text" id="address" required>
-    </div>
-    <div class="form-group">
-      <label for="city">Cidade</label>
-      <input type="text" id="city" required>
-    </div>
-    <div class="form-group">
-      <label for="state">Estado</label>
-      <input type="text" id="state" required>
-    </div>
-    <div class="form-group">
-      <label for="zip">CEP</label>
-      <input type="text" id="zip" required>
-    </div>
-    <div class="price-info">
-      <p><strong>Preço: R$ 249,90</strong></p>
-      <p>Devolução: 30 dias com nota fiscal</p>
-    </div>
-    <button type="submit">Finalizar Compra</button>
-  </form>
-  <div id="success-message">Compra realizada com sucesso! Obrigado por escolher o Whisper.</div>
 </div>
 
 <script>
-document.querySelector('.cta a').addEventListener('click', e => {
+document.querySelector('.cta-button').addEventListener('click', e => {
   e.preventDefault();
   document.querySelector('#comprar').style.display = 'block';
-  window.scrollTo({ top: document.querySelector('#comprar').offsetTop, behavior: 'smooth' });
+  document.body.style.overflow = 'hidden';
 });
 
 function closePurchase() {
   document.querySelector('#comprar').style.display = 'none';
+  document.body.style.overflow = 'auto';
 }
 
 document.getElementById('purchase-form').addEventListener('submit', e => {
@@ -427,20 +852,50 @@ document.getElementById('purchase-form').addEventListener('submit', e => {
   
   // Simular envio de dados para o servidor
   setTimeout(() => {
-    alert('Pedido confirmado! Você receberá um e-mail com os detalhes.');
     closePurchase();
-  }, 2000);
+    document.getElementById('purchase-form').style.display = 'block';
+    document.getElementById('success-message').style.display = 'none';
+    document.getElementById('purchase-form').reset();
+    alert('Pedido confirmado! Você receberá um e-mail com os detalhes.');
+  }, 3000);
 });
 
 let currentIndex = 0;
 const carousel = document.querySelector('.carousel');
 const images = document.querySelectorAll('.carousel img');
+const indicators = document.querySelectorAll('.indicator');
+
+function updateCarousel() {
+  carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+  
+  // Atualizar indicadores
+  indicators.forEach((indicator, index) => {
+    if (index === currentIndex) {
+      indicator.classList.add('active');
+    } else {
+      indicator.classList.remove('active');
+    }
+  });
+}
+
 function scrollCarousel(direction) {
   currentIndex += direction;
   if (currentIndex < 0) currentIndex = images.length - 1;
   if (currentIndex >= images.length) currentIndex = 0;
-  carousel.style.transform = `translateY(-${currentIndex * 220}px)`;
+  updateCarousel();
 }
+
+function setCarousel(index) {
+  currentIndex = index;
+  updateCarousel();
+}
+
+// Fechar modal ao clicar fora
+document.getElementById('comprar').addEventListener('click', e => {
+  if (e.target.id === 'comprar') {
+    closePurchase();
+  }
+});
 </script>
 </body>
 </html>
